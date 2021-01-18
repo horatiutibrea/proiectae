@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carti favorite</title>
+    
+    <script src="js/jquery-1.12.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    
+    <!-- Custom JS file -->
+    <script type="text/javascript" src="js/serialize.js"></script>
+    <script type="text/javascript" src="js/books.js"></script>
+</head>
+<body>
+
+<!-- Content Section -->
+<div class="main_menu home_menu">
+ 
+     <!--::header part start::-->
+    <header class="main_menu home_menu">
+        <div class="container-fluid">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-11">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="index.html"> <img src="img/logo.png" alt="logo" id="logo" style="width:150px;"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="menu_icon"><i class="fas fa-bars"></i></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse main-menu-item" id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.html">Acasa</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Despre noi</a>
+                                </li>
+                                
+                                   <li>
+                                     <a class="nav-link" href="books.html">Adauga carti favorite</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                
+                    </nav>
+                </div>
+        
+        </div>
+     </div>
+    </header>
+
+    
+    <br/>
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-12">
+            <div class="pull-right">
+        
+                <button class="btn btn-success" data-toggle="modal" data-target="#add_new_record_modal" onclick="addRecord()">Adauga o carte favorita</button>
+       
+            </div>
+            </br>
+        </div>
+
+      <div class="col-md-12">
+        <div class="table-primary">
+            <div class="records_content">
+                <br/>
+                <h3>Cartile mele favorite</h3>
+                <table id="books" class="table table-bordered table-striped">
+						<tr>
+							<th>ID</th>
+							<th>Titlu</th>
+							<th>Autor</th>
+						</tr>
+            		</tr>
+				</<table>
+            </div>
+     
+    </div>
+</div>
+
+<!-- /Content Section -->
+
+
+<!-- Bootstrap Modals -->
+<!-- Modal - Add New Article -->
+<div class="modal fade" id="add_new_record_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            
+            </div>
+            <div class="modal-body">
+                <form id="record_form">
+               <input type="hidden" name="id" id="id" />
+                    <div class="form-group">
+                        <label for="name">Titlu</label>
+                        <input type="text" name="title" id="title" placeholder="Titlu" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="abstract">Autor</label>
+                        <textarea name="author" id="author" placeholder="Autor"  class="form-control"></textarea>
+                    </div>
+		        
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Iesire</button>
+                <button type="button" class="btn btn-primary" onclick="saveRecord()">Salveaza</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- // Modal -->
+
+ 
+
+</body>
+</html>
