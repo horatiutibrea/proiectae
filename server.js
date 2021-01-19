@@ -1,8 +1,6 @@
 var express = require("express")
 var Sequelize = require("sequelize")
 
-//connect to mysql database
-//baza de date, username, password
 var sequelize = new Sequelize('library', 'username', 'password', {
     dialect:'mysql',
     host:'localhost'
@@ -14,7 +12,6 @@ sequelize.authenticate().then(function(){
     console.log(err)
 })
 
-//define a new Model
 var Books = sequelize.define('books', {
     title: Sequelize.STRING,
     author: Sequelize.STRING,
@@ -22,12 +19,11 @@ var Books = sequelize.define('books', {
 
 var app = express()
 
-//access static files
 app.use(express.static('public'))
 app.use('/admin', express.static('admin'))
 
-app.use(express.json());       // to support JSON-encoded bodies
-app.use(express.urlencoded()); // to support URL-encoded bodies
+app.use(express.json());       
+app.use(express.urlencoded());
 
 app.get('/createdb', (request, response) => {
     sequelize.sync({force: true}).then(() => {
@@ -50,10 +46,10 @@ async function getBooks(request, response) {
     }
 }
 
-// get a list of books
+
 app.get('/books', getBooks)
 
-// get one book by id
+
 app.get('/books/:id', function(request, response) {
     Books.findOne({where: {id:request.params.id}}).then(function(book) {
         if(book) {
@@ -64,7 +60,7 @@ app.get('/books/:id', function(request, response) {
     })
 })
 
-//create a new book
+
 app.post('/books', function(request, response) {
     Books.create(request.body).then(function(book) {
         response.status(201).send(book)
